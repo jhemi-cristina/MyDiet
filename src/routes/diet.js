@@ -3,7 +3,6 @@ const Diet = require("../models/Diet");
 const auth = require("../middleware/auth");
 const router = express.Router();
 
-// Rota para cadastrar uma dieta
 router.post("/add", auth, async (req, res) => {
   const { day, meals } = req.body;
 
@@ -20,7 +19,6 @@ router.post("/add", auth, async (req, res) => {
   }
 });
 
-// Rota para visualizar a dieta
 router.get("/", auth, async (req, res) => {
   try {
     const diets = await Diet.find({ userId: req.user.id });

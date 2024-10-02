@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-// Rota para registrar um novo usuário
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -17,7 +16,6 @@ router.post("/register", async (req, res) => {
     user = new User({ name, email, password });
     await user.save();
 
-    // Cria um token JWT
     const token = jwt.sign({ id: user._id }, "secretKey");
     res.json({ token });
   } catch (err) {
@@ -25,7 +23,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Rota para login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
