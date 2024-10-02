@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const authRoutes = require("./routes/auth");
+const dietRoutes = require("./routes/diet");
 
 const app = express();
 app.use(bodyParser.json());
-const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
-const dietRoutes = require("./routes/diet");
 app.use("/api/diet", dietRoutes);
 
 mongoose
